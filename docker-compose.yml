@@ -1,0 +1,31 @@
+version: "2.2"
+
+services:
+
+  mysqldb:
+    image: mysql
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: PassSecret
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
+
+  devapp:
+    build: ./front
+    ports:
+      - "4500:4200"
+    volumes:
+      - "/app/node_modules"
+      - "./front:/app"
+      
+  app:
+    build: ./server
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysqldb
+    environment:
+      - DATABASE_HOST=mysqldb
+    volumes:
+      - ./server:/app
