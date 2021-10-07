@@ -1,0 +1,54 @@
+<div id="formADD" class="col-md-4 offset-md-4">
+  <h3 style="text-align: center; margin-top: 50px;">Form Add Person</h3>
+  <div class="card">
+      <div class="card-body" style="text-align: center;">
+          <form>
+              <div class="form-group">
+                  <input id="fullnameFormSave" type="text" name="fullname" [(ngModel)]="person.fullname" placeholder="fullname" class="form-control" autofocus>
+              </div>
+              <div class="form-group" style="margin-top: 20px;">
+                  <input id="birthFormSave" type="date" name="birth" [(ngModel)]="person.birth" placeholder="birth" class="form-control" autofocus>
+              </div>
+              
+              <button class="btn btn-success btn-block" (click)="saveNewPerson()" style="margin-top: 20px;">
+                  SAVE
+              </button>
+          </form>
+      </div>
+  </div>
+  <div id="alert" style="display: none;" class="alert alert-dismissible alert-danger">
+    <strong>Oh!,</strong> This name already exists.
+  </div>
+</div>
+
+<br><br><br>
+<table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Birth</th>
+        <th scope="col">Full name</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-secondary" *ngFor="let person of persons">
+        <th scope="row">
+            {{person.birth | date: 'yyyy-MM-dd'}}
+        </th>
+        <td>
+            {{person.fullname}}
+        </td>
+        <td>
+          <button class="btn btn-info" [routerLink]="['/person/edit', person.id]">
+            EDIT
+          </button>
+        </td>
+        <td>
+          <button class="btn btn-danger" (click)="deletePerson(person.id)">
+            DELETE
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
