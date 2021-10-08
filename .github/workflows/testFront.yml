@@ -7,6 +7,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: docker build frontend
+    - name: docker build backend
       run:
-        docker build ./front -t front
+        docker build ./server -t backend
