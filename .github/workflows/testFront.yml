@@ -1,6 +1,16 @@
+name: Build Frontend
+
 on: push
-name: Test Frontend
 jobs:
-  test:
-    using: 'docker'
-    image: 'Dockerfile'
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: docker build front
+      run:
+        docker build ./front -t front
+    
+    - name: docker build backend
+      run:
+        docker build ./server -t server
+        
