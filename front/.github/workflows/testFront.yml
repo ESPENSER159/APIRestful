@@ -1,0 +1,6 @@
+on: push
+name: Test Frontend
+jobs:
+  test:
+    using: 'docker'
+    image: 'Dockerfile'     
