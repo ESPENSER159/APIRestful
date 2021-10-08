@@ -1,7 +1,6 @@
-name: Build Backend
+name: Build Branches
 
-on:
-  push: {branches: server}
+on: push
 
 jobs:
   build:
