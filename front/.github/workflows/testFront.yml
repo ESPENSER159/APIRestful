@@ -3,4 +3,4 @@ name: Test Frontend
 jobs:
   test:
     using: 'docker'
-    image: 'Dockerfile'     
+    image: 'Dockerfile'
