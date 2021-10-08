@@ -2,15 +2,13 @@ name: Build Frontend
 
 on:
   push:
-    branches:
-      - front
+    push: {branches: front}
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-
     - name: docker build Frontend
       run:
         docker build ./front -t frontend
