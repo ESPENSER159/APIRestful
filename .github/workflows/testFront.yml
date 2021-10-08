@@ -1,12 +1,14 @@
 name: Build Frontend
 
-on: push
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
+on:
+  push:
+    branches:
+      - front
+      build:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v2
 
-    - name: docker build backend
-      run:
-        docker build ./server -t backend
+        - name: docker build Frontend
+          run:
+            docker build ./front -t frontend
