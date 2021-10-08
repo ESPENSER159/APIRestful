@@ -1,14 +1,13 @@
-name: Build Frontend
+name: Build Backend
 
 on:
-  push:
-    push: {branches: front}
+  push: {branches: server}
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: docker build Frontend
+    - name: docker build Backend
       run:
-        docker build ./front -t frontend
+        docker build ./server -t Backend
