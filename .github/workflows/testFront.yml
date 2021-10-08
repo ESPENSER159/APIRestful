@@ -7,6 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: docker build Frontend
+      run:
+        docker build ./front -t frontend
+
     - name: docker build Backend
       run:
         docker build ./server -t backend
